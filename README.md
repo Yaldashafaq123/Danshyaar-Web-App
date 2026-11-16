@@ -20,6 +20,27 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Backend API configuration
+
+Set `NEXT_PUBLIC_API_URL` to the backend API's absolute URL before starting the app or creating a production build. HTTPS is required in production. HTTP is permitted outside production for development compatibility, but sends credentials and tokens without transport encryption; use it only in a trusted development environment. Next.js embeds `NEXT_PUBLIC_` values into the browser bundle at build time, so configure the value for the environment where the build will run. Do not include credentials or secrets in this URL.
+
+## Role dashboard routes
+
+Successful login routes users using the role returned by the authentication API:
+
+| Role | Dashboard route |
+| --- | --- |
+| Super Admin | `/super-admin` |
+| Admin | `/admin` |
+| Principal | `/principal` |
+| Finance | `/finance` |
+| HR | `/hr` |
+| Student | `/students` |
+| Teacher | `/teachers` |
+| Parent | `/parents` |
+
+Principal, finance, and HR modules are organized outside `app/admin`. Previous `/admin/academic`, `/admin/finance`, and `/admin/hr` URLs redirect to their new routes. Teacher and parent dashboard data/pages are not implemented yet; those routes display a notice instead of fabricated dashboard data.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
